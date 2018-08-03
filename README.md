@@ -23,3 +23,11 @@ Launch the app using
 ## Screenshots
 
 ![React-Movies Screenshot](./github-images/screenshot.png)
+
+## Contributions
+
+Contributions are welcome! Please read the [contributing guidelines](https://github.com/klendi/react-movies/blob/master/CONTRIBUTING.md) before getting started.
+
+## License
+
+[MIT](https://github.com/klendi/react-moves/blob/master/LICENSE)
