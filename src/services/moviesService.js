@@ -13,6 +13,7 @@ async function searchMovie(title, callback) {
     });
 }
 
+// TODO: Finish getGenresByID
 function getGenresByID(id, callback) {
   let data = [];
 
