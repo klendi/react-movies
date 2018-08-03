@@ -22,4 +22,4 @@ Launch the app using
 
 ## Screenshots
 
-![React-Movies Screenshot](./%5BGithub%5Dimages/screenshot.png)
+![React-Movies Screenshot](./github-images/screenshot.png)
