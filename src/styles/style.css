@@ -1,0 +1,21 @@
+.movie-poster {
+  width: 234px;
+  height: 364px;
+}
+
+.movie-title {
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+.movie {
+  margin-bottom: 3em;
+}
+
+.movie-genre {
+  color: rgb(79, 77, 77);
+}
+
+li {
+  list-style-type: none;
+}
