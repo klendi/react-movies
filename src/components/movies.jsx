@@ -35,7 +35,10 @@ class Movies extends Component {
     return (
       <ul className="row">
         {movies.map(m => (
-          <li className="col-sm-3 movie" key={m.id}>
+          <li
+            className="col-xs-12 col-sm-6 col-md-4 mx-auto col-xl-3 movie"
+            key={m.id}
+          >
             <img
               className="responsive-img movie-poster"
               src={'http://image.tmdb.org/t/p/w500/' + m.poster_path}
@@ -61,19 +64,17 @@ class Movies extends Component {
         <br />
         <form className="form-inline" onSubmit={this.handleFormSubmit}>
           <div className="form-group mx-sm-3 mb-2">
-            <label htmlFor="inputPassword2" className="sr-only">
-              Password
-            </label>
             <input
               type="text"
               className="form-control"
               id="movieTitle"
+              autofocus
               placeholder="Movie Title"
               value={this.state.searchMovieName}
               onChange={this.handleMovieTitleInput}
             />
           </div>
-          <button type="submit" className="btn btn-primary mb-2">
+          <button type="submit" className="btn btn-primary mb-2 ml-2">
             Search
           </button>
         </form>
