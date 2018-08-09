@@ -1,0 +1,34 @@
+.movie-poster {
+  width: 234px;
+  height: 364px;
+}
+
+.movie-title {
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+.movie {
+  margin-bottom: 2em;
+  transform: scale(1);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.movie:hover {
+  transform: scale(1.15);
+  transition: 0.5s;
+}
+
+.movie-genre {
+  color: rgb(146, 146, 146);
+}
+
+.movie-genre span {
+  margin-right: 3px;
+  font-size: 0.8em;
+}
+
+li {
+  list-style-type: none;
+}
