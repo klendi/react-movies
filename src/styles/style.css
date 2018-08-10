@@ -10,13 +10,16 @@
 
 .movie {
   margin-bottom: 2em;
+}
+
+.movie img {
   transform: scale(1);
   transition: 0.5s;
   cursor: pointer;
 }
 
-.movie:hover {
-  transform: scale(1.15);
+.movie img:hover {
+  transform: scale(1.05);
   transition: 0.5s;
 }
 
