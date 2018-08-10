@@ -8,6 +8,10 @@
   margin-top: 0.5em;
 }
 
+.movies-main-header {
+  text-align: center;
+}
+
 .movie {
   margin-bottom: 2em;
 }
@@ -25,13 +29,34 @@
 
 .movie-genre {
   color: rgb(146, 146, 146);
+  transition: 0.3s;
+}
+
+.movie-genre span:hover {
+  color: #007bff;
+  transition: 0.3s;
 }
 
 .movie-genre span {
   margin-right: 3px;
   font-size: 0.8em;
+  cursor: pointer;
 }
 
 li {
   list-style-type: none;
+}
+
+body {
+  /* background: #222d37; */
+  /* background: -moz-linear-gradient(left, #222d37 0%, #394d59 100%); */
+  /* background: -webkit-linear-gradient(left, #222d37 0%, #394d59 100%); */
+  /* background: linear-gradient(to right, #222d37 0%, #394d59 100%); */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222d37', endColorstr='#394d59',GradientType=1 ); */
+}
+.navbar {
+  /* background: #0d47a1; */
+}
+p {
+  /* color: white; */
 }

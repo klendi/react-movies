@@ -1,11 +1,8 @@
 const API_URL =
   'https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb'
 
-const API_GENRES =
-  'https://api.themoviedb.org/3/genre/movie/list?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US'
-
-export async function searchMovie(title, callback) {
-  fetch(`${API_URL}&query=${encodeURI(title)}`)
+export async function searchMovie(title, page, callback) {
+  fetch(`${API_URL}&query=${encodeURI(title)}&page=${page}`)
     .then(res => {
       return res.json()
     })
@@ -102,4 +99,14 @@ export function getGenresByID(ids) {
   })
 
   return data
+}
+
+export function getPopular() {
+  fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=1`
+  )
+}
+
+export function getRecommended() {
+  return []
 }

@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import { searchMovie, getGenresByID } from '../services/moviesService'
-import Movie from './movie'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+// import Movie from './movie'
+import Pagination from './pagination'
 
 class Movies extends Component {
   constructor() {
     super()
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
   state = {
     movies: [],
-    searchMovieName: ''
+    rawData: [],
+    searchMovieName: '',
+    currentPage: 1,
+    queryMessage: 'Search returned no movies'
   }
 
   handleMovieTitleInput = e => {
@@ -21,16 +24,37 @@ class Movies extends Component {
 
   async handleFormSubmit(e) {
     e.preventDefault()
-    await searchMovie(this.state.searchMovieName, (error, result) => {
-      // console.log(result)
-      this.setState({
-        movies: result.results
-      })
-    })
+    if (this.state.searchMovieName === undefined) return
+    await searchMovie(
+      this.state.searchMovieName,
+      this.state.currentPage,
+      (error, result) => {
+        this.setState({
+          movies: result.results,
+          rawData: result,
+          currentPage: result.page
+        })
+      }
+    )
   }
 
   handleImageClick = movie => {
     console.log('got the click, movie with id of ', movie.id)
+  }
+
+  async handlePageChange(page) {
+    this.setState({ currentPage: page }, () => {
+      searchMovie(
+        this.state.searchMovieName,
+        this.state.currentPage,
+        (error, result) => {
+          this.setState({
+            movies: result.results,
+            rawData: result
+          })
+        }
+      )
+    })
   }
 
   renderMoviesPosterList = movies => {
@@ -60,9 +84,9 @@ class Movies extends Component {
   }
 
   render() {
+    const { total_pages: totalPages, page: currentPage } = this.state.rawData
     return (
       <div>
-        <h1 style={{ textAlign: 'center' }}>Movies</h1>
         <br />
         <form className="form-inline" onSubmit={this.handleFormSubmit}>
           <div className="form-group mx-sm-3 mb-2">
@@ -70,7 +94,7 @@ class Movies extends Component {
               type="text"
               className="form-control"
               id="movieTitle"
-              autofocus
+              autoFocus
               placeholder="Movie Title"
               value={this.state.searchMovieName}
               onChange={this.handleMovieTitleInput}
@@ -81,7 +105,7 @@ class Movies extends Component {
           </button>
         </form>
         <br />
-        {this.state.movies.length === 0 ? (
+        {this.state.movies === undefined || this.state.movies.length === 0 ? (
           <p>Search returned no movies</p>
         ) : (
           <div>
@@ -95,6 +119,11 @@ class Movies extends Component {
             {this.renderMoviesPosterList(this.state.movies)}
           </div>
         )}
+        <Pagination
+          pageCount={totalPages || 1}
+          currentPage={currentPage}
+          onPageChange={this.handlePageChange}
+        />
       </div>
     )
   }
