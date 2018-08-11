@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Pagination from './pagination'
 import Movie from './movie'
 import { getPopular } from '../services/moviesService'
+import Paginate from 'react-paginate'
 
 class Popular extends Component {
   state = {
@@ -36,6 +37,19 @@ class Popular extends Component {
           pageCount={totalPages || 1}
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
+        />
+        <Paginate
+          reviousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={<a href="">...</a>}
+          breakClassName={'break-me'}
+          pageCount={totalPages || 1}
+          marginPagesDisplayed={10}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageChange}
+          containerClassName={'pagination justify-content-center'}
+          subContainerClassName={'page-item'}
+          activeClassName={'active'}
         />
       </div>
     )

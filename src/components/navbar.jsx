@@ -14,7 +14,7 @@ class NavBar extends Component {
     const { activeNavBarIndex } = this.state
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <Link className="navbar-brand" to="/">
+        <Link onClick={() => this.handleNavBarClick(0)} className="navbar-brand" to="/">
           <img
             width="35"
             height="35"
