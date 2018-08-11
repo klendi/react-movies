@@ -1,25 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { getGenresByID } from '../services/moviesService'
 
-class Movie extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Title</h1>
-        <h2>
-          Description Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Tenetur ipsum nesciunt facere sunt odit voluptas, cumque aliquid eos
-          iste perspiciatis ducimus distinctio tempore nisi exercitationem
-          officia aperiam vero quisquam recusandae debitis repellat animi beatae
-          sint doloribus facilis! Assumenda vero architecto velit excepturi
-          ipsam dicta amet porro quas, sit, quibusdam voluptate!
-        </h2>
-      </div>
-    )
-  }
+const Movie = props => {
+  const { movie } = props
+  return (
+    <li
+      className="col-xs-12 col-sm-6 col-md-4 mx-auto col-xl-3 movie"
+      key={movie.id}
+    >
+      <img
+        className="responsive-img movie-poster"
+        src={'http://image.tmdb.org/t/p/w500/' + movie.poster_path}
+        onClick={() => this.handleImageClick(movie)}
+      />
+      <h1 className="movie-title">{movie.title}</h1>
+      <p className="movie-genre">
+        {getGenresByID(movie.genre_ids).map(g => (
+          <span key={g.id}> {g.name} </span>
+        ))}
+      </p>
+    </li>
+  )
 }
 
 export default Movie

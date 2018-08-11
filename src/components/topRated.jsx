@@ -1,30 +1,27 @@
 import React, { Component } from 'react'
-import Pagination from './pagination'
 import Movie from './movie'
-import { getPopular } from '../services/moviesService'
+import Pagination from './pagination'
+import { getTopRated } from '../services/moviesService'
 
-class Popular extends Component {
+class TopRated extends Component {
   state = {
     movies: [],
     rawData: []
   }
 
   componentDidMount() {
-    getPopular().then(movies => {
+    getTopRated().then(movies => {
       this.setState({ movies: movies.results, rawData: movies })
     })
   }
 
   render() {
     const { movies } = this.state
-    const {
-      total_pages: totalPages,
-      page: currentPage,
-      total_results: totalResults
-    } = this.state.rawData
+    const { total_pages: totalPages, page: currentPage } = this.state.rawData
+
     return (
       <div>
-        <h1 className="movies-main-header display-4">Popular</h1>
+        <h1 className="movies-main-header display-4">Top Rated</h1>
         <br />
         <br />
         <ul className="row">
@@ -42,4 +39,4 @@ class Popular extends Component {
   }
 }
 
-export default Popular
+export default TopRated

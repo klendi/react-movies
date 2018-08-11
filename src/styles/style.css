@@ -10,6 +10,7 @@
 
 .movies-main-header {
   text-align: center;
+  margin-top: 20px;
 }
 
 .movie {
@@ -45,18 +46,4 @@
 
 li {
   list-style-type: none;
-}
-
-body {
-  /* background: #222d37; */
-  /* background: -moz-linear-gradient(left, #222d37 0%, #394d59 100%); */
-  /* background: -webkit-linear-gradient(left, #222d37 0%, #394d59 100%); */
-  /* background: linear-gradient(to right, #222d37 0%, #394d59 100%); */
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222d37', endColorstr='#394d59',GradientType=1 ); */
-}
-.navbar {
-  /* background: #0d47a1; */
-}
-p {
-  /* color: white; */
 }

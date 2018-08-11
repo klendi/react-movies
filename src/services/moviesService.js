@@ -1,15 +1,17 @@
 const API_URL =
   'https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb'
 
-export async function searchMovie(title, page, callback) {
-  fetch(`${API_URL}&query=${encodeURI(title)}&page=${page}`)
-    .then(res => {
-      return res.json()
-    })
-    .then(myJson => {
-      callback(null, myJson)
-      return myJson
-    })
+export function searchMovie(title, page) {
+  return new Promise((resolve, reject) => {
+    fetch(`${API_URL}&query=${encodeURI(title)}&page=${page}`)
+      .then(res => res.json())
+      .then(json => {
+        resolve(json)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
 }
 
 export function getGenresByID(ids) {
@@ -102,11 +104,46 @@ export function getGenresByID(ids) {
 }
 
 export function getPopular() {
-  fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=1`
-  )
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=1`
+    )
+      .then(res => res.json())
+      .then(json => {
+        resolve(json)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
 }
 
-export function getRecommended() {
-  return []
+export function getTopRated() {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1`
+    )
+      .then(res => res.json())
+      .then(json => {
+        resolve(json)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
+export function getDetailedMovie(movieID) {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieID}?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb`
+    )
+      .then(res => res.json())
+      .then(json => {
+        resolve(json)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
 }
