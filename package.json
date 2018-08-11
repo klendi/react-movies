@@ -1,8 +1,8 @@
 {
   "name": "react-movies",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "homepage": "https://klendi.github.io/react-movies",
+  // "homepage": "https://klendi.github.io/react-movies",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "express": "^4.16.3",
@@ -23,7 +23,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "postinstall": "npm run build"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
