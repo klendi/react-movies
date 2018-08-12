@@ -103,10 +103,10 @@ export function getGenresByID(ids) {
   return data
 }
 
-export function getPopular() {
+export function getPopular(page) {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=${page}`
     )
       .then(res => res.json())
       .then(json => {
@@ -118,10 +118,10 @@ export function getPopular() {
   })
 }
 
-export function getTopRated() {
+export function getTopRated(page) {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=1`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=${page}`
     )
       .then(res => res.json())
       .then(json => {

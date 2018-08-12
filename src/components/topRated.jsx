@@ -6,12 +6,21 @@ import { getTopRated } from '../services/moviesService'
 class TopRated extends Component {
   state = {
     movies: [],
-    rawData: []
+    rawData: [],
+    currentPage: 1
   }
 
   componentDidMount() {
-    getTopRated().then(movies => {
+    getTopRated(this.state.currentPage).then(movies => {
       this.setState({ movies: movies.results, rawData: movies })
+    })
+  }
+
+  handlePageChange = page => {
+    this.setState({ currentPage: page }, () => {
+      getTopRated(this.state.currentPage).then(movies => {
+        this.setState({ movies: movies.results, rawData: movies })
+      })
     })
   }
 

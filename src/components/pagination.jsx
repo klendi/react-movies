@@ -1,4 +1,12 @@
 import React, { Component } from 'react'
+import {
+  Link,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from 'react-scroll'
 import _ from 'lodash'
 
 class Pagination extends Component {
@@ -8,7 +16,10 @@ class Pagination extends Component {
 
   state = {
     leftBreak: false,
-    rightBreak: true
+    rightBreak: true,
+    numberOfElementsForBreakToCreate: 4,
+    numberOFElementsForRightBreakToTurnOff: 3,
+    numberOfElementsDisplayed: 5
   }
 
   generatePaginationArray = (pageCount, currentIndex) => {
@@ -19,22 +30,35 @@ class Pagination extends Component {
       return _.range(pageCount - 4, pageCount + 1)
   }
 
+  scrollToTop = () => {
+    scroll.scrollToTop()
+  }
+
   onPageClick = page => {
-    if (page >= 4 && page < this.props.pageCount - 3) {
+    if (page >= 4) {
       this.setState({
         leftBreak: true
       })
-    } else if (page < 4) {
+    }
+    if (page < 4) {
       this.setState({
         leftBreak: false
       })
-    } else if (page >= this.props.pageCount - 3) {
+    }
+    if (page >= this.props.pageCount - 3) {
       this.setState({
         rightBreak: false
       })
     }
+    if (page < this.props.pageCount - 3) {
+      this.setState({
+        rightBreak: true
+      })
+    }
 
     this.props.onPageChange(page)
+    // this.scrollToTop()
+    window.scrollTo(0, 0)
   }
 
   render() {
