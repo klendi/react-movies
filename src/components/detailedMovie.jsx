@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import queryString from 'querystring'
+import queryString from 'query-string'
 import { getDetailedMovie, getGenresByID } from '../services/moviesService'
 
 class DetailedMovie extends Component {
