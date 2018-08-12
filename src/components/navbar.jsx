@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 class NavBar extends Component {
   state = {
@@ -14,7 +14,7 @@ class NavBar extends Component {
     const { activeNavBarIndex } = this.state
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <Link onClick={() => this.handleNavBarClick(0)} className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           <img
             width="35"
             height="35"
@@ -23,7 +23,7 @@ class NavBar extends Component {
             alt=""
           />
           React-Movies
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -37,30 +37,15 @@ class NavBar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li
-              onClick={() => this.handleNavBarClick(0)}
-              className={activeNavBarIndex === 0 ? 'navitem active' : 'navitem'}
-            >
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li
-              onClick={() => this.handleNavBarClick(1)}
-              className={activeNavBarIndex === 1 ? 'navitem active' : 'navitem'}
-            >
-              <Link className="nav-link" to="/popular">
-                Popular
-              </Link>
-            </li>
-            <li
-              onClick={() => this.handleNavBarClick(2)}
-              className={activeNavBarIndex === 2 ? 'navitem active' : 'navitem'}
-            >
-              <Link className="nav-link" to="/top-rated">
-                Top Rated
-              </Link>
-            </li>
+            <NavLink exact className="navitem nav-link" to="/">
+              Home
+            </NavLink>
+            <NavLink className="navitem nav-link" to="/popular">
+              Popular
+            </NavLink>
+            <NavLink className="navitem nav-link" to="/top-rated">
+              Top Rated
+            </NavLink>
           </ul>
         </div>
       </nav>

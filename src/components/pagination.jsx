@@ -17,9 +17,6 @@ class Pagination extends Component {
   state = {
     leftBreak: false,
     rightBreak: true,
-    numberOfElementsForBreakToCreate: 4,
-    numberOFElementsForRightBreakToTurnOff: 3,
-    numberOfElementsDisplayed: 5
   }
 
   generatePaginationArray = (pageCount, currentIndex) => {

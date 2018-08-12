@@ -47,3 +47,12 @@
 li {
   list-style-type: none;
 }
+
+.inline-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-poster-image {
+  margin: 0 auto;
+}
