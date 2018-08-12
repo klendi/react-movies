@@ -3,7 +3,7 @@ import { searchMovie } from '../services/moviesService'
 import Movie from './movie'
 import Pagination from './pagination'
 import ListOrGrid from './listOrGrid'
-import queryString from 'query-string'
+import queryString from 'querystring'
 
 class Movies extends Component {
   constructor(props) {
