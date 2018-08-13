@@ -1,12 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Link,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller
-} from 'react-scroll'
 import _ from 'lodash'
 
 class Pagination extends Component {
@@ -16,7 +8,7 @@ class Pagination extends Component {
 
   state = {
     leftBreak: false,
-    rightBreak: true,
+    rightBreak: true
   }
 
   generatePaginationArray = (pageCount, currentIndex) => {
@@ -28,7 +20,7 @@ class Pagination extends Component {
   }
 
   scrollToTop = () => {
-    scroll.scrollToTop()
+    window.scrollTo(0, 0)
   }
 
   onPageClick = page => {
@@ -54,19 +46,11 @@ class Pagination extends Component {
     }
 
     this.props.onPageChange(page)
-    // this.scrollToTop()
-    window.scrollTo(0, 0)
+    this.scrollToTop()
   }
 
   render() {
-    const {
-      pageCount,
-      currentPage,
-      onPageChange,
-      breakSign,
-      nextButtonText,
-      PreviousButtonText
-    } = this.props
+    const { pageCount, currentPage, onPageChange } = this.props
 
     if (pageCount === 1 || pageCount === 0) return null
     const pagesArr = _.range(1, pageCount + 1)
@@ -97,9 +81,9 @@ class Pagination extends Component {
                   page === currentPage ? 'page-item active' : 'page-item'
                 }
               >
-                <a className="page-link" onClick={() => onPageChange(page)}>
+                <div className="page-link" onClick={() => onPageChange(page)}>
                   {page}
-                </a>
+                </div>
               </li>
             ))}
             <li
@@ -160,9 +144,12 @@ class Pagination extends Component {
                   page === currentPage ? 'page-item active' : 'page-item'
                 }
               >
-                <a className="page-link" onClick={() => this.onPageClick(page)}>
+                <div
+                  className="page-link"
+                  onClick={() => this.onPageClick(page)}
+                >
                   {page}
-                </a>
+                </div>
               </li>
             ))}
             {this.state.rightBreak ? (

@@ -25,11 +25,7 @@ class Popular extends Component {
 
   render() {
     const { movies } = this.state
-    const {
-      total_pages: totalPages,
-      page: currentPage,
-      total_results: totalResults
-    } = this.state.rawData
+    const { total_pages: totalPages, page: currentPage } = this.state.rawData
     return (
       <div>
         <h1 className="movies-main-header display-4">Popular</h1>

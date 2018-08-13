@@ -37,7 +37,6 @@ class Movies extends Component {
   getHeaderQuery = () => queryString.parse(this.props.location.search)
 
   componentDidMount() {
-    let qu = this.getHeaderQuery().q
     let page = this.getHeaderQuery().page
     let layout = this.getHeaderQuery().layout || 'grid'
 

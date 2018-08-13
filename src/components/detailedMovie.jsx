@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import queryString from 'query-string'
-import { getDetailedMovie, getGenresByID } from '../services/moviesService'
+import { getDetailedMovie } from '../services/moviesService'
 
 class DetailedMovie extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class DetailedMovie extends Component {
           <h1>Movie title is {movie.title}</h1>
           <img
             className="responsive-img full-poster-image"
+            alt="Poster Image"
             src={'http://image.tmdb.org/t/p/w500/' + movie.poster_path}
           />
           <h1 className="movie-title">{movie.title}</h1>

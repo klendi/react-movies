@@ -15,6 +15,7 @@ class Movie extends Component {
       <Link to={`/movie?id=${movie.id}`}>
         <img
           className="responsive-img movie-poster"
+          alt="Poster"
           src={'http://image.tmdb.org/t/p/w500/' + movie.poster_path}
         />
       </Link>
