@@ -1,5 +1,9 @@
+const dotenv = require('dotenv').config({ path: '../../' })
+
 const API_URL =
   'https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb'
+
+console.log(process.env)
 
 export function searchMovie(title, page) {
   return new Promise((resolve, reject) => {
