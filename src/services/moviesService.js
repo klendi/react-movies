@@ -1,11 +1,8 @@
-const dotenv = require('dotenv').config({ path: '../../' })
-
-const API_URL =
-  'https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb'
-
-console.log(process.env)
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export function searchMovie(title, page) {
+  let API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`
+
   return new Promise((resolve, reject) => {
     fetch(`${API_URL}&query=${encodeURI(title)}&page=${page}`)
       .then(res => res.json())
@@ -110,7 +107,7 @@ export function getGenresByID(ids) {
 export function getPopular(page) {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&language=en-US&page=${page}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
     )
       .then(res => res.json())
       .then(json => {
@@ -125,7 +122,7 @@ export function getPopular(page) {
 export function getTopRated(page) {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&page=${page}`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${page}`
     )
       .then(res => res.json())
       .then(json => {
@@ -139,9 +136,7 @@ export function getTopRated(page) {
 
 export function getDetailedMovie(movieID) {
   return new Promise((resolve, reject) => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieID}?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb`
-    )
+    fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}`)
       .then(res => res.json())
       .then(json => {
         resolve(json)
