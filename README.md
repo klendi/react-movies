@@ -22,7 +22,7 @@ Launch the app using
 
 ## Screenshots
 
-![React-Movies Screenshot](./github-images/screenshot.png)
+![React-Movies Screenshot](https://i.imgur.com/9RN0sma.png)
 
 ## Contributions
 
