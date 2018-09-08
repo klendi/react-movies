@@ -4,14 +4,15 @@ import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/style.css'
 import 'font-awesome/css/font-awesome.css'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import history from 'history'
 
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={history}>
     <App />
-  </BrowserRouter>,
+  </Router>,
   document.getElementById('root')
 )
 registerServiceWorker()

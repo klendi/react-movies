@@ -7,7 +7,6 @@
     "concurrently": "^3.6.1",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
-    "gh-pages": "^1.2.0",
     "lodash": "^4.17.10",
     "query-string": "^6.1.0",
     "react": "^16.4.1",
@@ -21,9 +20,7 @@
     "start": "react-scripts start --history-api-fallback",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -35,17 +32,5 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0"
-  },
-  "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">0.25%",
-      "not op_mini all",
-      "ie 11"
-    ]
   }
 }
