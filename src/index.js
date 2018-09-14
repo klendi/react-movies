@@ -5,12 +5,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './styles/style.css'
 import 'font-awesome/css/font-awesome.css'
 import { BrowserRouter as Router } from 'react-router-dom'
-import history from 'history'
 
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <Router history={history}>
+  <Router>
     <App />
   </Router>,
   document.getElementById('root')
