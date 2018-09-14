@@ -32,5 +32,9 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0"
+  },
+    "browsers": {
+    "development": "last 1 version",
+    "production": "last 2 versions, > 5%"
   }
 }
