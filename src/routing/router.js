@@ -11,11 +11,10 @@ const router = () => {
     <Router>
       <Switch>
         <Route path="/movie" component={DetailedMovie} />
-        <Route path="/movies" component={Movies} />
+        <Route exact path="/" component={Movies} />
         <Route path="/popular" component={Popular} />
         <Route path="/top-rated" component={TopRated} />
         <Route path="/not-found" component={NotFound} />
-        <Redirect from="/" exact to="/movies" />
         <Redirect to="/not-found" />
       </Switch>
     </Router>
