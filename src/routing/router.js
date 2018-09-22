@@ -14,7 +14,6 @@ const router = () => {
       <Route path="/popular" component={Popular} />
       <Route path="/top-rated" component={TopRated} />
       <Route path="/not-found" component={NotFound} />
-      <Redirect to="/not-found" />
     </Switch>
   )
 }
