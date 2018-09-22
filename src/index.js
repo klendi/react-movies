@@ -4,14 +4,14 @@ import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/style.css'
 import 'font-awesome/css/font-awesome.css'
-import { HashRouter, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
-  <HashRouter>
+  <Router>
     <App />
-  </HashRouter>,
+  </Router>,
   document.getElementById('root')
 )
 registerServiceWorker()
