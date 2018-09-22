@@ -61,7 +61,7 @@ class Movies extends Component {
 
   pushToHistory = (query, page, layout) => {
     this.props.history.push(
-      `/movies?q=${encodeURIComponent(query)}&page=${page}&layout=${layout}`
+      `/search?q=${encodeURIComponent(query)}&page=${page}&layout=${layout}`
     )
   }
 
@@ -139,7 +139,7 @@ class Movies extends Component {
           ) : (
             <div>
               <p>
-                Got <span className="font-weight-bold">{totalResults}</span>{' '}
+                Showing <span className="font-weight-bold">{totalResults}</span>{' '}
                 results for '{this.state.submitedMovieName}'
               </p>
               {this.renderMoviesPosterList(this.state.movies)}

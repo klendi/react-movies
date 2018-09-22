@@ -42,10 +42,7 @@ class DetailedMovie extends Component {
               <span key={genre.id}> {genre.name} </span>
             ))}
           </p>
-          <button
-            onClick={() => history.push('/movies')}
-            className="btn btn-primary"
-          >
+          <button onClick={() => history.push('/')} className="btn btn-primary">
             Home
           </button>
         </div>
