@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
 const hist = createBrowserHistory()
 
-
 ReactDOM.render(
   <Router history={hist}>
     <App />
