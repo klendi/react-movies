@@ -33,7 +33,6 @@
 
 .movie-title {
   font-size: 1.3em;
-  width: ;
   padding-top: 1.5em;
 }
 
@@ -129,4 +128,8 @@ li {
 .text-container-grid {
   width: 234px;
   margin-top: 20rem;
+}
+
+.float-right {
+  float: right;
 }
