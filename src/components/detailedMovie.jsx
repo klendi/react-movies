@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import queryString from 'query-string'
 import { getDetailedMovie } from '../services/moviesService'
+import {endTheBar, beginTheBar} from '../services/loadingBarService'
 
 class DetailedMovie extends Component {
   constructor(props) {
@@ -13,9 +14,11 @@ class DetailedMovie extends Component {
   }
 
   loadMovie = () => {
+    beginTheBar()
     const { id } = queryString.parse(this.props.location.search)
     getDetailedMovie(id).then(m => {
       this.setState({ movie: m }, () => {
+        endTheBar()
         this.setState({ canRender: true })
       })
     })

@@ -1,7 +1,7 @@
 const API_KEY = process.env.REACT_APP_API_KEY
 
 export function searchMovie(title, page) {
-  let API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`
+  let API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&append_to_response=releases`
 
   return new Promise((resolve, reject) => {
     fetch(`${API_URL}&query=${encodeURI(title)}&page=${page}`)

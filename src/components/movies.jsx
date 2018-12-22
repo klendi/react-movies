@@ -74,9 +74,9 @@ class Movies extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
-    beginTheBar()
     if (this.state.searchMovieName === undefined) return
     if (this.state.searchMovieName === '') return
+    beginTheBar()
     this.pushToHistory(
       this.state.searchMovieName,
       this.state.currentPage,
