@@ -4,6 +4,7 @@ import Movie from './movie'
 import Pagination from './pagination'
 import ListOrGrid from './listOrGrid'
 import queryString from 'query-string'
+import {beginTheBar, endTheBar} from '../services/loadingBarService'
 
 class Movies extends Component {
   constructor(props) {
@@ -20,16 +21,19 @@ class Movies extends Component {
     loading: false
   }
 
-  search = () => {
+  search = callback => {
     let data = this.getHeaderQuery().q
     let page = this.state.currentPage
 
     searchMovie(data, page).then(result => {
+
       this.setState({
         movies: result.results,
         rawData: result,
         currentPage: 1,
         submitedMovieName: data
+      },() => {
+        callback()
       })
     })
   }
@@ -37,11 +41,14 @@ class Movies extends Component {
   getHeaderQuery = () => queryString.parse(this.props.location.search)
 
   componentDidMount() {
+    beginTheBar()
     let page = this.getHeaderQuery().page
     let layout = this.getHeaderQuery().layout || 'grid'
 
     this.setState({ currentPage: page, layoutMode: layout }, () => {
-      this.search()
+      this.search(() => {
+        endTheBar()
+      })
     })
   }
 
@@ -67,6 +74,7 @@ class Movies extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
+    beginTheBar()
     if (this.state.searchMovieName === undefined) return
     if (this.state.searchMovieName === '') return
     this.pushToHistory(
@@ -75,8 +83,9 @@ class Movies extends Component {
       this.state.layoutMode
     )
 
+
     this.setState({ submitedMovieName: this.state.searchMovieName }, () => {
-      this.search()
+      this.search(() => endTheBar())
     })
   }
 
@@ -107,6 +116,7 @@ class Movies extends Component {
       page: currentPage,
       total_results: totalResults
     } = this.state.rawData
+
     if (!this.state.loading) {
       return (
         <div>
@@ -150,6 +160,7 @@ class Movies extends Component {
             currentPage={currentPage}
             onPageChange={this.handlePageChange}
           />
+          
         </div>
       )
     } else return null

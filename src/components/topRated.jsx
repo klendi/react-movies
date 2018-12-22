@@ -1,32 +1,39 @@
-import React, { Component } from 'react'
-import Movie from './movie'
-import Pagination from './pagination'
-import { getTopRated } from '../services/moviesService'
+import React, { Component } from "react";
+import Movie from "./movie";
+import Pagination from "./pagination";
+import { getTopRated } from "../services/moviesService";
+import { beginTheBar, endTheBar } from "../services/loadingBarService";
 
 class TopRated extends Component {
   state = {
     movies: [],
     rawData: [],
     currentPage: 1
-  }
+  };
 
   componentDidMount() {
+    beginTheBar();
     getTopRated(this.state.currentPage).then(movies => {
-      this.setState({ movies: movies.results, rawData: movies })
-    })
+      this.setState({ movies: movies.results, rawData: movies }, () => {
+        endTheBar();
+      });
+    });
   }
 
   handlePageChange = page => {
+    beginTheBar();
     this.setState({ currentPage: page }, () => {
       getTopRated(this.state.currentPage).then(movies => {
-        this.setState({ movies: movies.results, rawData: movies })
-      })
-    })
-  }
+        this.setState({ movies: movies.results, rawData: movies }, () => {
+          endTheBar();
+        });
+      });
+    });
+  };
 
   render() {
-    const { movies } = this.state
-    const { total_pages: totalPages, page: currentPage } = this.state.rawData
+    const { movies } = this.state;
+    const { total_pages: totalPages, page: currentPage } = this.state.rawData;
 
     return (
       <div>
@@ -44,8 +51,8 @@ class TopRated extends Component {
           onPageChange={this.handlePageChange}
         />
       </div>
-    )
+    );
   }
 }
 
-export default TopRated
+export default TopRated;

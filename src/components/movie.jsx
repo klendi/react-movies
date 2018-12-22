@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { getGenresByID } from '../services/moviesService'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { getGenresByID } from "../services/moviesService";
+import { Link } from "react-router-dom";
 
 class Movie extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   renderGridMovie = movie => (
@@ -16,7 +16,7 @@ class Movie extends Component {
         <img
           className="responsive-img movie-poster"
           alt="Poster"
-          src={'http://image.tmdb.org/t/p/w500/' + movie.poster_path}
+          src={"http://image.tmdb.org/t/p/w500/" + movie.poster_path}
         />
       </Link>
       <h1 className="movie-title">{movie.title}</h1>
@@ -26,7 +26,7 @@ class Movie extends Component {
         ))}
       </p>
     </li>
-  )
+  );
 
   renderListMovie = movie => (
     <li
@@ -35,30 +35,33 @@ class Movie extends Component {
     >
       <img
         className="responsive-img movie-poster"
-        src={'http://image.tmdb.org/t/p/w500/' + movie.poster_path}
+        src={"http://image.tmdb.org/t/p/w500/" + movie.poster_path}
         onClick={() => this.handleImageClick(movie)}
       />
-      <h1 className="movie-title">{movie.title}</h1>
-      <p className="movie-genre">
-        {getGenresByID(movie.genre_ids).map(g => (
-          <span key={g.id}> {g.name} </span>
-        ))}
-      </p>
+      <div className="text-container-list">
+        <h1 className="movie-title-list">{movie.title}</h1>
+        <br />
+        <p className="movie-genre movie-genre-list">
+          {getGenresByID(movie.genre_ids).map(g => (
+            <span key={g.id}> {g.name} </span>
+          ))}
+        </p>
+      </div>
     </li>
-  )
+  );
 
   render() {
-    const { movie, type } = this.props
+    const { movie, type } = this.props;
     switch (type) {
-      case 'grid':
-        return this.renderGridMovie(movie)
-      case 'list':
-        return this.renderListMovie(movie)
+      case "grid":
+        return this.renderGridMovie(movie);
+      case "list":
+        return this.renderListMovie(movie);
 
       default:
-        return this.renderGridMovie(movie)
+        return this.renderGridMovie(movie);
     }
   }
 }
 
-export default Movie
+export default Movie;

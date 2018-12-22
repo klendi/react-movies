@@ -8,6 +8,10 @@
   margin-top: 0.5em;
 }
 
+.movie-title-list {
+  font-size: 2em;
+}
+
 .movies-main-header {
   text-align: center;
   margin-top: 20px;
@@ -55,4 +59,14 @@ li {
 
 .full-poster-image {
   margin: 0 auto;
+}
+
+.movie-genre-list {
+  margin-top: -2em;
+  margin-left: 3px;
+}
+
+.text-container-list {
+  display: block;
+  padding-left: 2em;
 }

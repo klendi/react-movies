@@ -27,6 +27,8 @@ Launch the app using
 ## Contributions
 
 Contributions are welcome! Please read the [contributing guidelines](https://github.com/klendi/react-movies/blob/master/CONTRIBUTING.md) before getting started.
+## Code Style
+[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## License
 

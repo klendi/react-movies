@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Pagination from './pagination'
 import Movie from './movie'
 import { getPopular } from '../services/moviesService'
+import store from "../store";
+import {beginTheBar, endTheBar} from '../services/loadingBarService'
+
 
 class Popular extends Component {
   state = {
@@ -11,13 +14,21 @@ class Popular extends Component {
   }
 
   componentDidMount() {
+    beginTheBar()
+
     getPopular(this.state.currentPage).then(movies => {
-      this.setState({ movies: movies.results, rawData: movies })
+      this.setState({ movies: movies.results, rawData: movies }, () => {
+        endTheBar()
+      })
     })
   }
+
   handlePageChange = page => {
+    beginTheBar()
     this.setState({ currentPage: page }, () => {
       getPopular(this.state.currentPage).then(movies => {
+
+        endTheBar()
         this.setState({ movies: movies.results, rawData: movies })
       })
     })
